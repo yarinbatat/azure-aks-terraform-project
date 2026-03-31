@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-service
+spec:
+  type: LoadBalancer # זה יבקש מ-Azure כתובת IP ציבורית אמיתית
+  selector:
+    app: web # זה חייב להתאים ל-label שהגדרנו ב-Deployment
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
